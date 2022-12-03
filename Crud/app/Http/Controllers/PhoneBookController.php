@@ -90,8 +90,8 @@ class PhoneBookController extends Controller
     {
         $phone = PhoneBook::findOrFail($id);
 
-        if($phone->getUserId() !== Auth::user()->getUserId()) {
-         return redirect()->route('phone.index')->with('error', 'This contact does not belong to you');
+        if ($phone->getUserId() !== Auth::user()->getUserId()) {
+            return redirect()->route('phone.index')->with('error', 'This contact does not belong to you');
         }
 
         return view('phone.edit')->with('phone', $phone);

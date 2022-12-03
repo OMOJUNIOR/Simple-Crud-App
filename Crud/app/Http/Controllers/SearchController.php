@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Models\PhoneBook;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SearchController extends Controller
 {
@@ -23,5 +22,4 @@ class SearchController extends Controller
 
         return view('phone.index', compact('contacts'));
     }
-    
 }

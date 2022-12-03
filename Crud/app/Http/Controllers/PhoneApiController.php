@@ -2,28 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\PhoneBook;
 
 class PhoneApiController extends Controller
 {
-    public function getPhone(){
+    public function getPhone()
+    {
+        $phone = PhoneBook::with('user')->where('user_id', '=', '2')->get();
 
-        $phone = PhoneBook::with('user')->where('user_id','=','2')->get();
-
-        if($phone->isEmpty()){
-
-
+        if ($phone->isEmpty()) {
             return response()->json([
                 'success' => false,
-                'message' => 'Phone not found'
+                'message' => 'Phone not found',
             ], 404);
-
         }
 
         return response()->json([
             'status' => 'success',
-            'data' => $phone
+            'data' => $phone,
         ], 200);
     }
 }
