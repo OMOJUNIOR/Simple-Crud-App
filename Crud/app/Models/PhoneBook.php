@@ -4,12 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Coderflex\Laravisit\Concerns\CanVisit;
+use Coderflex\Laravisit\Concerns\HasVisits;
 use Illuminate\Http\Request;
 
-class PhoneBook extends Model
+class PhoneBook extends Model implements CanVisit
 {
-    use HasFactory;
-
+    use HasFactory, HasVisits;
+    
     protected $fillable = [
         'name',
         'phone_number',

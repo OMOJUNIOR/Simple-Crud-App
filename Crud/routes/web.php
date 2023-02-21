@@ -23,6 +23,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('phone', PhoneBookController::class);
     Route::get('phone.search', [SearchController::class, 'searchPhone'])->name('phone.searchPhone');
     Route::resource('user', ProfileController::class);
+    Route::get('laravisit', [PhoneBookController::class, 'testLaravisit']);
 });
 
 require __DIR__.'/auth.php';

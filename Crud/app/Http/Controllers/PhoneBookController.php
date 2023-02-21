@@ -21,6 +21,19 @@ class PhoneBookController extends Controller
         return view('phone.index', compact('contacts'));
     }
 
+    public function testLaravisit(){
+
+        $phone = PhoneBook::with('user')->first();
+        $phone->visits();
+        $analyticsData = [
+            'user' => $phone->visit()->withUser(),
+            'name'=> auth()->user()->name,
+            'ip_address' => $phone->visit()->withIp(),
+            'country' => $phone->visit()->withData(['country'=> 'TR']),
+        ];
+        dd($analyticsData);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
