@@ -16,8 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('/', PhoneBookController::class);
     Route::resource('phone', PhoneBookController::class);

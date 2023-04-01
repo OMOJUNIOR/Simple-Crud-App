@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\PhoneApiController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\V1\CreatApiUserController;
+use App\Http\Controllers\Api\V1\PhoneBookApiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,8 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('v1')->group(function () {
+    Route::post('create-user', [CreatApiUserController::class, 'createUserController']);
+    Route::post('create-token', [CreatApiUserController::class, 'createUserToken']);
 });
 
-Route::get('getPhone', [PhoneApiController::class, 'getPhone']);
+Route::group(['prefix' => 'v1', 'middleware' => 'auth:sanctum'], function () {
+    Route::post('add-contact', [PhoneBookApiController::class, 'store']);
+    Route::get('get-contacts', [PhoneBookApiController::class, 'index']);
+    Route::get('get-contact/{id}', [PhoneBookApiController::class, 'show']);
+    Route::put('update-contact/{id}', [PhoneBookApiController::class, 'update']);
+    Route::delete('delete-contact/{id}', [PhoneBookApiController::class, 'destroy']);
+});

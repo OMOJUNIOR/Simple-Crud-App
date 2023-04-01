@@ -2,16 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Coderflex\Laravisit\Concerns\CanVisit;
 use Coderflex\Laravisit\Concerns\HasVisits;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class PhoneBook extends Model implements CanVisit
 {
     use HasFactory, HasVisits;
-    
+
     protected $fillable = [
         'name',
         'phone_number',
@@ -31,7 +31,7 @@ class PhoneBook extends Model implements CanVisit
             'country' => 'required',
             'email' => 'required',
             'job',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5048',
         ]);
     }
 

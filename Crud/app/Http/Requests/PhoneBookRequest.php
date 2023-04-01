@@ -13,7 +13,9 @@ class PhoneBookRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        $user = $this->user();
+
+        return $user != null && $user->tokenCan('create', 'update', 'delete');
     }
 
     /**
@@ -29,8 +31,8 @@ class PhoneBookRequest extends FormRequest
             'relationship' => 'required',
             'country' => 'required',
             'email' => 'required',
-            'job',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1048',
+            'job' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:1048',
         ];
     }
 }

@@ -21,15 +21,15 @@ class PhoneBookController extends Controller
         return view('phone.index', compact('contacts'));
     }
 
-    public function testLaravisit(){
-
+    public function testLaravisit()
+    {
         $phone = PhoneBook::with('user')->first();
         $phone->visits();
         $analyticsData = [
             'user' => $phone->visit()->withUser(),
-            'name'=> auth()->user()->name,
+            'name' => auth()->user()->name,
             'ip_address' => $phone->visit()->withIp(),
-            'country' => $phone->visit()->withData(['country'=> 'TR']),
+            'country' => $phone->visit()->withData(['country' => 'TR']),
         ];
         dd($analyticsData);
     }
@@ -47,7 +47,6 @@ class PhoneBookController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -113,7 +112,6 @@ class PhoneBookController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
