@@ -19,7 +19,7 @@ class CreatApiUserController extends Controller
         ]);
 
         $user = new User();
-        $user->name = $request->name;
+        $user->name = $request->name; 
         $user->email = $request->email;
         $user->tel_number = $request->tel_number;
         $user->password = bcrypt($request->password);

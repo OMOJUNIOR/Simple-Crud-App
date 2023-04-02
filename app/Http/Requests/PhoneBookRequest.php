@@ -15,7 +15,7 @@ class PhoneBookRequest extends FormRequest
     {
         $user = $this->user();
 
-        return $user != null && $user->tokenCan('create', 'update', 'delete');
+        return $user != null && $user->tokenCan('create');
     }
 
     /**

@@ -22,9 +22,12 @@
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.1",
-        "phpstan/phpstan": "^1.10",
+        "nunomaduro/larastan": "^2.0",
+        "phpmetrics/phpmetrics": "^2.8",
         "phpunit/phpunit": "^9.5.10",
-        "spatie/laravel-ignition": "^1.0"
+        "spatie/laravel-ignition": "^1.0",
+        "vimeo/psalm": "^5.9",
+        "wnx/laravel-stats": "^2.11"
     },
     "autoload": {
         "psr-4": {
