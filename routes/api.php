@@ -23,6 +23,7 @@ Route::prefix('v1')->group(function () {
 Route::group(['prefix' => 'v1', 'middleware' => 'auth:sanctum'], function () {
     Route::post('add-contact', [PhoneBookApiController::class, 'store']);
     Route::get('get-contacts', [PhoneBookApiController::class, 'index']);
+    Route::post('search-contacts', [PhoneBookApiController::class, 'searchContact']);
     Route::get('get-contact/{id}', [PhoneBookApiController::class, 'show']);
     Route::put('update-contact/{id}', [PhoneBookApiController::class, 'update']);
     Route::delete('delete-contact/{id}', [PhoneBookApiController::class, 'destroy']);

@@ -100,4 +100,20 @@ class PhoneBookApiController extends Controller
 
         return response()->json(['message' => 'You are not authorized to view this data'], 401);
     }
+
+
+    public function searchContact(Request $request){
+
+        $search = $request->key_word;
+        $contacts = PhoneBook::where('name', 'like', '%'.$search.'%')->where('user_id', Auth::user()->id)->paginate(3);
+
+        if ($contacts->count() > 0) {
+            return response()->json($contacts, 200);
+        } else {
+            return response()->json(['message' => 'No contacts found'], 404);
+        }
+
+        
+    }
 }
+
